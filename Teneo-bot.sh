@@ -1,60 +1,69 @@
 #!/bin/bash
 
+# 定义颜色
+GREEN=$(tput setaf 2)
+BLUE=$(tput setaf 4)
+YELLOW=$(tput setaf 3)
+RED=$(tput setaf 1)
+BOLD=$(tput bold)
+RESET=$(tput sgr0)
+
 # 显示标题
-echo "====================================="
+echo "${YELLOW}${BOLD}====================================="
 echo "🚀 Teneo 节点机器人自动化安装脚本 🚀"
-echo "====================================="
+echo "=====================================${RESET}"
 
 # 菜单函数
 show_menu() {
-  echo "请选择操作:"
-  echo "1) 安装依赖"
-  echo "2) 编辑账户配置"
-  echo "3) 编辑代理配置"
-  echo "4) 配置是否使用代理"
-  echo "5) 启动 Teneo 节点机器人"
-  echo "6) 退出"
+  echo ""
+  echo "${BLUE}${BOLD}请选择操作:${RESET}"
+  echo "${GREEN}1)${RESET} 安装依赖"
+  echo "${GREEN}2)${RESET} 编辑账户配置"
+  echo "${GREEN}3)${RESET} 编辑代理配置"
+  echo "${GREEN}4)${RESET} 配置是否使用代理"
+  echo "${GREEN}5)${RESET} 启动 Teneo 节点机器人"
+  echo "${GREEN}6)${RESET} 退出"
   echo ""
 }
 
 # 克隆仓库并安装依赖
 clone_and_install_dependencies() {
   if [ -d "teneo-node-bot" ]; then
-    echo "teneo-node-bot 目录已存在，跳过克隆。"
+    echo "${YELLOW}teneo-node-bot 目录已存在，跳过克隆。${RESET}"
   else
-    echo "正在克隆仓库..."
-    git clone https://github.com/ziqing888/teneo-node-bot.git || { echo "克隆仓库失败"; exit 1; }
+    echo "${BLUE}正在克隆仓库...${RESET}"
+    git clone https://github.com/ziqing888/teneo-node-bot.git || { echo "${RED}克隆仓库失败${RESET}"; exit 1; }
   fi
 
-  echo "进入 teneo-node-bot 目录并安装依赖..."
-  cd teneo-node-bot || { echo "无法进入 teneo-node-bot 目录"; exit 1; }
+  echo "${BLUE}进入 teneo-node-bot 目录并安装依赖...${RESET}"
+  cd teneo-node-bot || { echo "${RED}无法进入 teneo-node-bot 目录${RESET}"; exit 1; }
   npm install
   cd ..
-  echo "依赖安装完成！"
+  echo "${GREEN}依赖安装完成！${RESET}"
 }
 
 # 编辑账户配置
 edit_accounts() {
-  echo "打开账户配置文件 (account.js) 进行编辑..."
+  echo "${BLUE}打开账户配置文件 (account.js) 进行编辑...${RESET}"
   nano teneo-node-bot/account.js
 }
 
 # 编辑代理配置
 edit_proxies() {
-  echo "打开代理配置文件 (proxy.js) 进行编辑..."
+  echo "${BLUE}打开代理配置文件 (proxy.js) 进行编辑...${RESET}"
   nano teneo-node-bot/proxy.js
 }
 
 # 配置是否使用代理
 edit_use_proxy() {
-  echo "打开代理配置文件 (config.js) 进行编辑..."
+  echo "${BLUE}打开代理配置文件 (config.js) 进行编辑...${RESET}"
   nano teneo-node-bot/config.js
 }
 
 # 启动项目
 start_project() {
-  echo "进入 teneo-node-bot 目录并启动 Teneo 节点机器人..."
-  cd teneo-node-bot || { echo "无法进入 teneo-node-bot 目录"; exit 1; }
+  echo "${BLUE}进入 teneo-node-bot 目录并启动 Teneo 节点机器人...${RESET}"
+  cd teneo-node-bot || { echo "${RED}无法进入 teneo-node-bot 目录${RESET}"; exit 1; }
   npm start
   cd ..
 }
@@ -80,11 +89,11 @@ while true; do
       start_project
       ;;
     6)
-      echo "退出脚本。"
+      echo "${YELLOW}退出脚本。${RESET}"
       exit 0
       ;;
     *)
-      echo "无效选项，请重新选择。"
+      echo "${RED}无效选项，请重新选择。${RESET}"
       ;;
   esac
 done
