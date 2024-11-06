@@ -57,10 +57,10 @@ run_script() {
 # 显示菜单
 show_menu() {
   echo "${BLUE}请选择操作:${RESET}"
-  echo "${GREEN}1)${RESET} 克隆项目库并安装依赖"
-  echo "${GREEN}2)${RESET} 编辑邮箱列表 (email.txt)"
-  echo "${GREEN}3)${RESET} 配置 config.js 文件"
-  echo "${GREEN}4)${RESET} 运行批量创建账户脚本"
+  echo "${GREEN}1)${RESET} 安装依赖"
+  echo "${GREEN}2)${RESET} 编辑邮箱列表 "
+  echo "${GREEN}3)${RESET} 配置密码 "
+  echo "${GREEN}4)${RESET} 批量创建账户"
   echo "${GREEN}5)${RESET} 退出"
 }
 
