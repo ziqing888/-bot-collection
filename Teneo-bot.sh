@@ -37,7 +37,7 @@ clone_and_install_dependencies() {
 
   echo "${BLUE}进入 teneo-node-bot 目录并安装依赖...${RESET}"
   cd teneo-node-bot || { echo "${RED}无法进入 teneo-node-bot 目录${RESET}"; exit 1; }
-  npm install
+  npm install && npm run setup
   cd ..
   echo "${GREEN}依赖安装完成！${RESET}"
 }
@@ -45,26 +45,26 @@ clone_and_install_dependencies() {
 # 编辑账户配置
 edit_accounts() {
   echo "${BLUE}打开账户配置文件 (account.js) 进行编辑...${RESET}"
-  nano teneo-node-bot/account.js
+  nano teneo-node-bot/accounts/accounts.js
 }
 
 # 编辑代理配置
 edit_proxies() {
   echo "${BLUE}打开代理配置文件 (proxy.js) 进行编辑...${RESET}"
-  nano teneo-node-bot/proxy.js
+  nano teneo-node-bot/config/proxy_list.js
 }
 
 # 配置是否使用代理
 edit_use_proxy() {
   echo "${BLUE}打开代理配置文件 (config.js) 进行编辑...${RESET}"
-  nano teneo-node-bot/config.js
+  nano teneo-node-bot/config/config.js
 }
 
 # 启动项目
 start_project() {
   echo "${BLUE}进入 teneo-node-bot 目录并启动 Teneo 节点机器人...${RESET}"
   cd teneo-node-bot || { echo "${RED}无法进入 teneo-node-bot 目录${RESET}"; exit 1; }
-  npm start
+  npm run start
   cd ..
 }
 
