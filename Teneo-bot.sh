@@ -48,19 +48,19 @@ clone_and_install_dependencies() {
 # 编辑账户配置
 edit_accounts() {
   echo "${BLUE}打开账户配置文件 (account.js) 进行编辑...${RESET}"
-  nano teneo-node-bot/accounts/accounts.js
+  nano teneo-node-bot/accounts.js
 }
 
 # 编辑代理配置
 edit_proxies() {
   echo "${BLUE}打开代理配置文件 (proxy.js) 进行编辑...${RESET}"
-  nano teneo-node-bot/config/proxy_list.js
+  nano teneo-node-bot/proxy.js
 }
 
 # 配置是否使用代理
 edit_use_proxy() {
   echo "${BLUE}打开代理配置文件 (config.js) 进行编辑...${RESET}"
-  nano teneo-node-bot/config/config.js
+  nano teneo-node-bot/config.js
 }
 
 # 启动项目
