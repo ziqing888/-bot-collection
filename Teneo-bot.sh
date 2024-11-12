@@ -13,6 +13,9 @@ echo "${YELLOW}${BOLD}====================================="
 echo "🚀 Teneo 节点机器人自动化安装脚本 🚀"
 echo "=====================================${RESET}"
 
+# 保存初始目录
+START_DIR=$(pwd)
+
 # 菜单函数
 show_menu() {
   echo ""
@@ -37,8 +40,8 @@ clone_and_install_dependencies() {
 
   echo "${BLUE}进入 teneo-node-bot 目录并安装依赖...${RESET}"
   cd teneo-node-bot || { echo "${RED}无法进入 teneo-node-bot 目录${RESET}"; exit 1; }
-  npm install && npm run setup
-  cd ..
+  npm install && npm run setup || { echo "${RED}依赖安装失败${RESET}"; exit 1; }
+  cd "$START_DIR"
   echo "${GREEN}依赖安装完成！${RESET}"
 }
 
@@ -64,8 +67,8 @@ edit_use_proxy() {
 start_project() {
   echo "${BLUE}进入 teneo-node-bot 目录并启动 Teneo 节点机器人...${RESET}"
   cd teneo-node-bot || { echo "${RED}无法进入 teneo-node-bot 目录${RESET}"; exit 1; }
-  npm run start
-  cd ..
+  npm run start || { echo "${RED}启动失败${RESET}"; exit 1; }
+  cd "$START_DIR"
 }
 
 # 主逻辑
